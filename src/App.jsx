@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom'
+import AllBeers from './components/AllBeers';
+import HomePage from './components/HomePage';
+import NewBeer from './components/NewBeer';
+import RandomBeer from './components/RandomBeer';
+import SingleBeer from './components/SingleBeer';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/random-beer' element={<RandomBeer />} />
+      <Route path='/beers' element={<AllBeers />} />
+      <Route path='/beers/:id' element={<SingleBeer />} />
+      <Route path='/new-beer' element={<NewBeer />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
